@@ -11,11 +11,19 @@ import kotlinx.android.synthetic.main.activity_main.text_view_result
 import kotlinx.android.synthetic.main.activity_tictac.*
 
 class tictac : AppCompatActivity() {
-
+    /**
+     * dwuwymiarowa tablica
+     */
     private val boardCells = Array(3) { arrayOfNulls<ImageView>(3) }
 
+    /**
+     * stworzenie obiektu clasy Board
+     */
     var board = Board()
 
+    /**
+     * przeładowanie metody onCreate
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tictac)
@@ -32,6 +40,9 @@ class tictac : AppCompatActivity() {
         }
     }
 
+    /**
+     * funkcja odpowiadajaca za rozmieszczanie ruchow komputera
+     */
     private fun mapBoardToUi() {
         for (i in board.board.indices) {
             for (j in board.board.indices) {
@@ -53,6 +64,9 @@ class tictac : AppCompatActivity() {
         }
     }
 
+    /**
+     * funckja odpowiadajaca za załadowanie planszy
+     */
 
     private fun loadBoard() {
         for (i in boardCells.indices) {
@@ -75,6 +89,9 @@ class tictac : AppCompatActivity() {
         }
     }
 
+    /**
+     * klasa klikniecia w plasze
+     */
     inner class CellClickListener(
         private val i: Int,
         private val j: Int

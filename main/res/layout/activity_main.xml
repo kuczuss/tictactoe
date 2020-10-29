@@ -28,7 +28,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" app:fontFamily="casual" android:textStyle="bold"
         android:textAllCaps="false" android:textSize="30sp"/>
-
+    <EditText
+        android:id="@+id/edit_text1"
+        android:layout_centerHorizontal="true"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="386dp"
+        android:text="Name"/>
 
     <Button
         android:id="@+id/button_play"

@@ -10,10 +10,22 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_tictac.*
 import kotlinx.android.synthetic.main.activity_tictac.text_view_result
 
-class MultiPlayers : AppCompatActivity() { private val boardCells = Array(3) { arrayOfNulls<ImageView>(3) }
+class MultiPlayers : AppCompatActivity() {
 
+    /**
+     * dwuwymiarowa tablica
+     */
+    
+    private val boardCells = Array(3) { arrayOfNulls<ImageView>(3) }
+    
+    /**
+     * stworzenie obiektu clasy Board
+     */
     var board = Board()
 
+    /**
+     * przeładowanie metody onCreate
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_multi_players)
@@ -31,6 +43,9 @@ class MultiPlayers : AppCompatActivity() { private val boardCells = Array(3) { a
         }
     }
 
+    /**
+     * funkcja odpowiadajaca za rozmieszczanie ruchow komputera
+     */
     private fun mapBoardToUi() {
         for (i in board.board.indices) {
             for (j in board.board.indices) {
@@ -52,7 +67,9 @@ class MultiPlayers : AppCompatActivity() { private val boardCells = Array(3) { a
         }
     }
 
-
+    /**
+     * funckja odpowiadajaca za załadowanie planszy
+     */
     private fun loadBoard() {
         for (i in boardCells.indices) {
             for (j in boardCells.indices) {
@@ -73,8 +90,15 @@ class MultiPlayers : AppCompatActivity() { private val boardCells = Array(3) { a
             }
         }
     }
+
+    /**
+     * zmienna odpowiada za kolejnosc ruchow graczy
+     */
     var k: Int = 0
 
+    /**
+     * klasa klikniecia w plasze
+     */
     inner class CellClickListener(
         private val i: Int,
         private val j: Int

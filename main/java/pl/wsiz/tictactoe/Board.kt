@@ -2,13 +2,22 @@ package pl.wsiz.tictactoe
 
 class Board {
 
+    /**
+     * obiekty stałe
+     */
     companion object {
         const val PLAYER = "O"
         const val COMPUTER = "X"
     }
 
+    /**
+     * tablica w celu wygenerowania mapy
+     */
     val board = Array(3) { arrayOfNulls<String>(3) }
 
+    /**
+     * sprawdzenie wolnych ruchów
+     */
     val availableCells: List<Cell>
         get() {
             val cells = mutableListOf<Cell>()
@@ -22,10 +31,15 @@ class Board {
             return cells
         }
 
+    /**
+     * Jeśli gra sie zakończy zmienna sie zmieni
+     */
     val isGameOver: Boolean
         get() = hasComputerWon() || hasPlayerWon() || availableCells.isEmpty()
 
-
+    /**
+     * metoda sprawdzająca czy komputer wygrał
+     */
     fun hasComputerWon(): Boolean {
         if (board[0][0] == board[1][1] &&
             board[0][0] == board[2][2] &&
@@ -53,6 +67,9 @@ class Board {
         return false
     }
 
+    /**
+     * metoda sprawdzająca czy gracz wygrał
+     */
     fun hasPlayerWon(): Boolean {
 
         if (board[0][0] == board[1][1] &&
@@ -81,9 +98,14 @@ class Board {
         return false
     }
 
-
+    /**
+     * zmienna dla ruchu komputera
+     */
     var computersMove: Cell? = null
 
+    /**
+     * Implementacja algorytmu minimax
+     */
     fun minimax(depth: Int, player: String): Int {
         if (hasComputerWon()) return +1
         if (hasPlayerWon()) return -1
@@ -128,6 +150,10 @@ class Board {
 
         return if (player == COMPUTER) max else min
     }
+
+    /**
+     * umieszczanie ruchu na planczy
+     */
     fun placeMove(cell: Cell, player: String) {
         board[cell.i][cell.j] = player
     }
